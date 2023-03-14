@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import DisplayCards from './components/DisplayCards'
 
 function App() {
   return (
-    <div className="App">
-      Salut la team
+    <div>
+    <DisplayCards/>
     </div>
   );
 }
