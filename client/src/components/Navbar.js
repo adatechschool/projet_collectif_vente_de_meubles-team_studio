@@ -10,9 +10,7 @@ export default function Navbar() {
   const searchBar = () => {
     console.log("search bar");
   };
-  const dropDown = () => {
-    console.log("drop down");
-  };
+  
 
   return (
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
@@ -33,14 +31,16 @@ export default function Navbar() {
             alt="Access count"
           />
         </button>
+
+        {/* Pour la barre de recherche et le dropdown menu*/}
       </div>
 
       <form>
         <div class="flex">
           <button
             id="dropdown-button"  
-            data-dropdown-toggle="dropdown"
-            className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:ring-gray-800 dark:text-white dark:border-gray-800"
+            //data-dropdown-toggle="dropdown"
+            className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:dark-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
             type="button"
             
           >
@@ -106,14 +106,14 @@ export default function Navbar() {
             <input
               type="search"
               id="search-dropdown"
-              class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+              class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 border-l-gray-50 border-l-2 border border-gray-300  focus:dark-black-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search furniture..."
               required
               
             />
             <button
               type="submit"
-              class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-gray-800 rounded-r-lg border border-gray-800 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
+              class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-gray-800 border-gray-800 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:ring-gray-800"
               onClick={searchBar}
             >
               <svg
