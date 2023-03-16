@@ -2,10 +2,10 @@ import './App.css';
 import DisplayCards from './components/DisplayCards';
 import {Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import Banner from './components/Banner';
 import {Home} from './pages/Home';
 import Fetching from './components/Fetching';
+import Footer from './components/Footer';
 
 function App() {
   return (
