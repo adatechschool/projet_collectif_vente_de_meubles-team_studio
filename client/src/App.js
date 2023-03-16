@@ -11,7 +11,6 @@ function App() {
   return (
     <div>
       <Navbar/>
-      <Footer/>
       <Banner />
       {/* <a href="/home">click maison</a> */}
       <>
@@ -21,6 +20,7 @@ function App() {
       </> 
       <DisplayCards/>
       <Fetching/>
+      <Footer/>
     </div>
   );
 }
