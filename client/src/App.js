@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import {Home} from './pages/Home';
+import Fetching from './components/fetching';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </Routes>
       </> 
       <DisplayCards/>
+      <Fetching/>
     </div>
   );
 }
