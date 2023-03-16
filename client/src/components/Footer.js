@@ -6,7 +6,7 @@ import Data from "../util/Data" ;
   
     return (
   
-  <div className="bg-[#151515]  text-center text-xs p-5  h-19 absolute w-full flex justify-around">
+  <div className="bg-[#151515]  text-center text-xs p-5  h-19 absolute  w-full flex justify-around">
     {/*container */}
     
       
