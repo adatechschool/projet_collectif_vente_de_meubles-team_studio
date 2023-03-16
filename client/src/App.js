@@ -11,7 +11,6 @@ function App() {
   return (
     <div>
       <Navbar/>
-      
       <Banner />
       {/* <a href="/home">click maison</a> */}
       <>

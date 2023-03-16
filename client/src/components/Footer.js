@@ -6,7 +6,7 @@ import Data from "../util/Data" ;
   
     return (
   
-  <div className="bg-[#151515]  text-center text-xs p-5  h-19 absolute  w-full flex justify-around">
+  <div className="bg-[#151515]  text-center text-xs p-5  h-19 absolute w-full flex justify-around">
     {/*container */}
     
       
@@ -37,7 +37,7 @@ import Data from "../util/Data" ;
           <div>
             <h2 className="text-white text-3xl pb-3">Follow Us</h2>
             </div>
-            <div className="flex justify-center justify-between">
+            <div className="flex justify-between">
            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-white  ">
              <FaFacebookSquare size="2em" />
            </a>
