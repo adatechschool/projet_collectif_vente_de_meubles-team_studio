@@ -7,7 +7,7 @@ export default function Navbar() {
     }
 
     return (
-    <div className="bg-[#151515] relative h-10 items-center justify-center flex">
+    <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
         {/* [] pour couleur hexadécimale */}
         <div className="flex items-center absolute  ">
             <img src="./img/logo.svg" width={90}/>
