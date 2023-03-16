@@ -52,17 +52,6 @@ export default function Navbar() {
                 className="absolute left-1 bottom-1 h-4 w-4"
                 alt="Search Bar"
               />
-        {/* [] pour couleur hexadécimale */}
-        <div className="flex items-center absolute  ">
-            <img src="./img/logo.svg" width={90}/>
-        </div>
-
-        <div className="flex ml-auto space-x-2 ">
-            <button type="button" onClick={showCart}>
-                <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart"/>
-            </button>
-            <button type="button" onClick={userConnect}>
-                <img src="./img/user.svg" className="h-5 w-5 mr-4" alt="Access count"/>
             </button>
           </div>
         </form>
