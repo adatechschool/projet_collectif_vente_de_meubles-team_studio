@@ -10,7 +10,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
 });
 
 /* GET home page. */
-router.get('/furnitures' , (req, res) => {
+router.get('/' , (req, res, next) => {
   try {
         let sql = "SELECT * FROM furnitures"
         sequelize.query(sql)
