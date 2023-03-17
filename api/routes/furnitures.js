@@ -14,6 +14,7 @@ router.get('/' , (req, res, next) => {
         let sql = "SELECT furniture.furniture_Id, image.image_name, furniture.furniture_type, furniture.furniture_price FROM furniture INNER JOIN image ON furniture.furniture_id = image.image_furniture_id;"
         sequelize.query(sql)
         .then(([result]) => {
+          console.log(result);
           result = createArrayOfImagesFromResultJsonObject(result);
               console.log(result)
               res.send(result)})
