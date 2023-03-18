@@ -5,8 +5,8 @@ import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import {Login} from './pages/Login';
 import {Informations} from './pages/Informations'
-import Fetching from './components/Fetching';
 import Footer from './components/Footer';
+
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
       </Routes>
       </> 
       <DisplayCards/>
-      <Fetching/>
       <Footer/>
+      
     </div>
   );
 }
