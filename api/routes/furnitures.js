@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
 /* GET home page. */
 router.get('/' , (req, res, next) => {
   try {
-        let sql = "SELECT furniture.furniture_Id, image.image_name, furniture.furniture_type, furniture.furniture_price FROM furniture INNER JOIN image ON furniture.furniture_id = image.image_furniture_id;"
+        let sql = "SELECT furniture.furniture_Id, image.image_name, furniture.furniture_name, furniture.furniture_type, furniture.furniture_price, furniture.furniture_stock, furniture.furniture_description, furniture.furniture_dimension FROM furniture INNER JOIN image ON furniture.furniture_id = image.image_furniture_id;"
         sequelize.query(sql)
         .then(([result]) => {
           result = createArrayOfImagesFromResultJsonObject(result);

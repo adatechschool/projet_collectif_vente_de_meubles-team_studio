@@ -24,7 +24,9 @@ router.post('/', async(req,res)=>{
         bcrypt.compare(password, checkUser[0]['user_password'], (err, data) => {
                 if(err) {return res.json("error verifying credentials")}
                 else if (data) {
-                    return res.json({ msg: "Login successful" })
+                    console.log("Login Successful")
+                    return  res.redirect('/furnitures')
+                    //return res.json({ msg: "Login successful" })
                 } else {
                     return res.json({ msg: "Invalid credentials" })
                 }

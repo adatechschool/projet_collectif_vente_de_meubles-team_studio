@@ -30,7 +30,7 @@ async(req, res) => {
         console.log(findUser)
         // if user_email exists
         if (findUser.length > 0){
-            return res.json({message:"email already exists"})
+            return res.json({message:"Email Already exists, Go to Sign In "})
         }
         //findUser returns an array, if empty insert into DB
         else if (findUser.length === 0 ) {
