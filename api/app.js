@@ -6,21 +6,31 @@ var logger = require('morgan');
 
 var furnituresRouter = require('./routes/furnitures');
 var usersRouter = require('./routes/users');
+var registrationRouter = require('./routes/registration');
+var loginRouter = require('./routes/login');
 
 var app = express();
+
+// Route pour accéder aux images
+app.get('/images/:imageName', (req, res) => {
+  const imageName = req.params.imageName;
+  res.sendFile(path.join(__dirname, 'public/images', imageName));
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());//parse incoming Request Object as a JSON Object
+app.use(express.urlencoded({ extended: true }));//parse incoming Request Object if object, with nested objects, or generally any type.
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/furnitures', furnituresRouter);
 app.use('/users', usersRouter);
+app.use('/registration', registrationRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

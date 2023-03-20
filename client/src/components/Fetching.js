@@ -1,10 +1,12 @@
-export default function Fetching(){
-    fetch('http://localhost:3003/furnitures')
-        .then(response => response.json())
-        .then(data => {
-                console.log(data)
-            })
-        .catch(error => {
-                console.error(error);
-            });
-}
+export function Fetching() {
+    const getFurnitures = async () => {
+      const res = await fetch("http://localhost:9000/furnitures", {
+            type: "GET",
+        });
+        return await res.json();
+    };
+  
+    return {
+      getFurnitures,
+    };
+  }
