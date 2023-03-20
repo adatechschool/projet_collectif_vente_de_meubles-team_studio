@@ -15,8 +15,8 @@ function App() {
   return (
     <div>
       <Navbar/>
-      <Cart/>
       <Banner />
+      <DisplayCards/>
       <>
       <Routes>
         <Route path='/login' element={<Login/>}/>
@@ -25,7 +25,6 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
       </Routes>
       </> 
-      <DisplayCards/>
       <Footer/>
     </div>
   );
