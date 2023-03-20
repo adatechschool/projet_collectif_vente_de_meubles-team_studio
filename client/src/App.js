@@ -4,7 +4,8 @@ import {Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import {Login} from './pages/Login';
-import {Informations} from './pages/Informations'
+import {Informations} from './pages/Informations';
+import {Contact} from './pages/Contact';
 import Fetching from './components/Fetching';
 import Footer from './components/Footer';
 
@@ -17,11 +18,13 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/informations' element={<Informations/>}/>
+        <Route path='/Contact' element={<Contact/>}/>
       </Routes>
       </> 
       <DisplayCards/>
+     
       <Fetching/>
-      <Footer/>
+     <Footer/>
     </div>
   );
 }
