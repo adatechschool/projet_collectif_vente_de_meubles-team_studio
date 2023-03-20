@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');//newly installed
+
 
 var furnituresRouter = require('./routes/furnitures');
 var usersRouter = require('./routes/users');
@@ -10,6 +12,7 @@ var registrationRouter = require('./routes/registration');
 var loginRouter = require('./routes/login');
 
 var app = express();
+
 
 // Route pour accéder aux images
 app.get('/images/:imageName', (req, res) => {
@@ -26,11 +29,13 @@ app.use(express.json());//parse incoming Request Object as a JSON Object
 app.use(express.urlencoded({ extended: true }));//parse incoming Request Object if object, with nested objects, or generally any type.
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({ credentials: true }));//Newly added
 
 app.use('/furnitures', furnituresRouter);
 app.use('/users', usersRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
