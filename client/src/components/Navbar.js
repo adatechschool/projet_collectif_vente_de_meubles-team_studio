@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const showCart = () => {
@@ -19,10 +20,13 @@ export default function Navbar() {
       </div>
 
       <div className="flex ml-auto space-x-2">
+        <Link to="/cart">
         <button type="button" onClick={showCart}>
           <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
         </button>
-
+        </Link>
+{/* using (Link to) component to redirect for the target page */}
+        <Link to="/login"> 
         <button type="button" onClick={userConnect}>
           <img
             src="./img/user.svg"
@@ -30,6 +34,7 @@ export default function Navbar() {
             alt="Access count"
           />
         </button>
+        </Link>
 
         <form>
           <div className="relative">
