@@ -19,7 +19,7 @@ export default function DisplayCards() {
     }, [isMounted]);
     
     return (
-      <div className="p-8">
+      <div id="products" className="p-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 m-4 items-center justify-center ">
           {furnitures && furnitures.map((furniture, index) => {
             return (
