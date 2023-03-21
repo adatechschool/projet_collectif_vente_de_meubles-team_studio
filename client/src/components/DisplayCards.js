@@ -1,54 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Fetching } from "./Fetching";
+export default function DisplayCards({ photo, name, type, price }) {
+  // const addCart = () => {
+  //   console.log('add cart')
+  // };
 
-export default function DisplayCards() {
-  const addCart = () => {
-    console.log('add cart')
-  };
+  return (
+    <div className="p-8 ">
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 transition delay-150 duration-300 ease-in-out">
 
-  const FurnituresList = () => {
-    const [furnitures, setFurnitures] = useState([]);
-    const [isMounted, setIsMounted] = useState(false);
-      
-    useEffect(() => {
-      !isMounted &&
-        Fetching().getFurnitures().then((json) => {
-          setFurnitures(json);
-          setIsMounted(true);
-        });
-    }, [isMounted]);
-    
-    return (
-      <div id="products" className="p-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 m-4 items-center justify-center ">
-          {furnitures && furnitures.map((furniture, index) => {
-            return (
-              <div className="flex items-center justify-center relative" >
-                <div className="bg-gray-400 flex flex-row-reverse items-start justify-center w-80 h-88 place-content-between overflow-hidden">
-                  <div className="w-80 h-80 flex items-center justify-center hover:scale-110 transition duration-300 ease-in-out">
-                  <img src={`http://localhost:9000/images/${furniture.image_name[0]}.jpg`} alt={`${furniture.furniture_type} image`} />
-                  </div>
 
-                  <div className="w-80 h-17 absolute -bottom-2 px-3 order-first bg-gray-200">
-                    <a className="" key={index}>
-                      {furniture.furniture_type}
-                      <br />{furniture.furniture_price} €
-                    </a>
-                  </div>
-                  
-                  <div className="absolute -bottom-1 right-8">
-                    <button type="button" onClick={addCart}>
-                      <img src="./img/cart.svg" alt="Ajouter au panier" className="h-8 w-8" />
-                    </button>
-                  </div>
-                </div>
-              </div>                
-            )                          
-          })}
+          <div className="group">
+            <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+              <img src={`http://localhost:9000/images/${photo}.jpg`} alt={`${type}`} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div className="mt-4 flex justify-between">
+              <div>
+                <h3 className="text-sm text-gray-700">
+                  <a href="link">
+                    <span aria-hidden="true" className="absolute inset-0"></span>
+                    {name}
+                  </a>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">{type}</p>
+              </div>
+              <p className="text-sm font-medium text-gray-900">{price}€</p>
+            </div>
+            <button type="submit" className="scale-100 mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-stone-200 py-3 px-8 text-sm text-gray-700 text-black hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+          </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
-  return <FurnituresList />;
-}
+

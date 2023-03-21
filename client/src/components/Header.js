@@ -1,4 +1,4 @@
-import Banner from "./Banner";
+// import Banner from "./Banner";
 
 export default function Navbar() {
   const showCart = () => {
@@ -15,7 +15,7 @@ export default function Navbar() {
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
-        <img src="./img/logo.svg" width={90} />
+        <img src="./img/logo.svg" width={90} alt="" />
       </div>
 
       <div className="flex ml-auto space-x-2">
