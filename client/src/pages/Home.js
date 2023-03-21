@@ -39,6 +39,7 @@ export const Home = () => {
             name={furniture.furniture_name}
             type={furniture.furniture_type}
             price={furniture.furniture_price}
+            id={furniture.furniture_Id}
           />
         ))}
       </div>
