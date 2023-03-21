@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom" 
 
-
 export default function Navbar() {
   const searchBar = () => {
     console.log("search bar");

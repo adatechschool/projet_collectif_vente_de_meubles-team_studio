@@ -8,14 +8,9 @@ var furnituresRouter = require('./routes/furnitures');
 var usersRouter = require('./routes/users');
 var registrationRouter = require('./routes/registration');
 var loginRouter = require('./routes/login');
+var imagesRouter = require('./routes/images')
 
 var app = express();
-
-// Route pour accéder aux images
-app.get('/images/:imageName', (req, res) => {
-  const imageName = req.params.imageName;
-  res.sendFile(path.join(__dirname, 'public/images', imageName));
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +26,7 @@ app.use('/furnitures', furnituresRouter);
 app.use('/users', usersRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
+app.use('/images/:imageName', imagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
