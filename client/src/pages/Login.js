@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 export const Login = ()=> {
 
@@ -21,7 +23,9 @@ export const Login = ()=> {
       )
       .then(data =>{
         if(data === 'Login Successful'){
-          navigate("/cart")
+          navigate("/")
+        }else if(data ==='Invalid credentials'){
+          
         }
       })
   }
@@ -46,13 +50,18 @@ export const Login = ()=> {
               <label className='text-[#6b6b6b]'>Password</label>
               <input className='border p-2 text-black focus:outline-none focus:border-black focus:ring-1 focus:ring-white' type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <button className='border w-full my-5 py-2 bg-[#151515] text-white font-medium border-none hover:bg-[#353535]' type='submit'>SIGN IN</button>
+            <div>
+              {/* add the invalid credentials */}
+            </div>
+            <button className='border w-full my-8 py-2 bg-[#151515] text-white font-medium border-none hover:bg-[#353535]' type='submit'>SIGN IN</button>
             <div className='flex justify-between'>
               <p className='flex items-center accent-black'><input className='mr-2' type="checkbox"/> Remember Me</p>
               {/* <a href='/'>Create an account</a> */}
             </div>
             <div className='text-center text-sm my-10 underline'>
-              <a href='/'>Want to join the community? Sign up now</a>
+            <NavLink to="/register" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                <h3>Want to join the community? Sign up now</h3>
+            </NavLink>
             </div>
           </form>
         </div>   

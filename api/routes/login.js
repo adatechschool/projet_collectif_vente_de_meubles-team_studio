@@ -19,17 +19,17 @@ router.post('/', async(req,res)=>{
                         })
     console.log(checkUser)
     if (checkUser.length === 0) {
-        return res.send({message:"User Not Found"})//modif send instead of json
+        return res.status(404).send({message:"User Not Found"})//modif send instead of json
     }else {
         bcrypt.compare(password, checkUser[0]['user_password'], (err, data) => {
-                if(err) {return res.json("error verifying credentials")}
+                if(err) {return res.send("error verifying credentials")}
                 else if (data) {
                     console.log("Login Successful")
                     return  res.send({message:"Login Successful"})
                                 .redirect('/furnitures')
                     
                 } else {
-                    return res.send({message:"Invalid credentials"})
+                    return res.status(400).send({message:"Invalid credentials"})
                 }
     })
 }})

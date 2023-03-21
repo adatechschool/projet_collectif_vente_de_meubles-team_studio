@@ -4,11 +4,13 @@ import Axios from 'axios';
 
 export function Registration(){
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [firstname, setFirstname] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [address, setAddress] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [address, setAddress] = useState("");
+  const [response, setResponse] = useState('')
+
 
    function handleSubmit(e) {
     e.preventDefault();
@@ -19,14 +21,9 @@ export function Registration(){
         firstname : firstname,
         lastname : lastname,
         address : address
-      }).then((response) => 
-      {
-        console.log(response)
-        return response}
-      )
-    
-        
-      
+      }).then((response) => {
+        setResponse(response.data.message)
+      }).catch(err => console.log(err))
   }
 
     return(
@@ -66,15 +63,11 @@ export function Registration(){
             <div className='flex flex-col py-2'>
               <label className='text-[#6b6b6b]'>Password</label>
               <input className='border p-2 text-black focus:outline-none focus:border-black focus:ring-1 focus:ring-white' type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <div>
+                <h5 className='text-orange-700 text-sm'>{response}</h5>
+            </div>
             </div>
             <button className='border w-full my-5 py-2 bg-[#151515] text-white font-medium border-none hover:bg-[#353535]' type='submit'>Register</button>
-            {/* <div className='flex justify-between'>
-              <p className='flex items-center accent-black'><input className='mr-2' type="checkbox"/> Remember Me</p>
-              <a href='/'>Create an account</a>
-            </div> */}
-            {/* <div className='text-center text-sm my-10 underline'>
-              <a href='/'>Want to join the community? Sign up now</a>
-            </div> */}
           </form>
         </div>   
     </div>
