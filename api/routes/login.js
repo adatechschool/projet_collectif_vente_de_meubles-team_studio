@@ -43,7 +43,8 @@ router.post('/', async(req,res)=>{
                         console.log(req.session.userId);
                         
                     }
-                    return res.send({msg : userId});
+                    return (res.send({msg : userId}),
+                            res.redirect('/furnitures'))
                     
                     //return res.json({ msg: "Login successful" })
                 } else {
