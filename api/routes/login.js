@@ -36,11 +36,15 @@ router.post('/', async(req,res)=>{
                     console.log("Login Successful")
                     let sql = `SELECT user_id FROM user WHERE user_email = '${email}'`;
                     const user = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT });
+                    let userId = "";
                     if (user.length > 0) {
-                        const userId = user[0].user_id;
+                        userId += user[0].user_id;
                         req.session.userId = userId;
+                        console.log(req.session.userId);
+                        
                     }
-                    return  res.redirect('/furnitures')
+                    return res.send({msg : userId});
+                    
                     //return res.json({ msg: "Login successful" })
                 } else {
                     return res.json({ msg: "Invalid credentials" })
