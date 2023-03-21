@@ -1,4 +1,4 @@
-export default function DisplayCards({ photo, name, type, price }) {
+export default function DisplayCards({ photo, name, type, price, id }) {
   // const addCart = () => {
   //   console.log('add cart')
   // };
@@ -16,7 +16,7 @@ export default function DisplayCards({ photo, name, type, price }) {
             <div className="mt-4 flex justify-between">
               <div>
                 <h3 className="text-sm text-gray-700">
-                  <a href="link">
+                  <a href={`http://localhost:3000/informations/${id}`}>
                     <span aria-hidden="true" className="absolute inset-0"></span>
                     {name}
                   </a>
