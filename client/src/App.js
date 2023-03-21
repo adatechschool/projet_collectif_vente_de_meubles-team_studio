@@ -9,6 +9,7 @@ import Fetching from './components/Fetching';
 import {Cart} from './pages/Cart';
 import {Informations} from './pages/Informations'
 import Footer from './components/Footer';
+import {Registration} from './pages/Registration'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/informations' element={<Informations/>}/>
         <Route path='/Contact' element={<Contact/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/register' element={<Registration/>}/>
       </Routes>
       </> 
       <Footer/>
