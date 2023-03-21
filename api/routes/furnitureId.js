@@ -18,8 +18,6 @@ router.get('/furniture/:id', (req, res, next) => {
         .then(([result]) => {
               result = CreateArrayOfImage(result)
               res.send(result)
-              // let imageName = result.image_name[0]
-              // res.sendFile(path.join(__dirname, 'public/images', imageName));
             })
 
   } catch (error) {  console.error('Impossible de se connecter, erreur suivante :', error); }
