@@ -3,7 +3,6 @@ const { Sequelize } = require('sequelize');
 var router = express.Router();
 require('dotenv').config();
 var bcrypt = require("bcrypt");
-const saltRounds = 10;
 
 const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
 dialect: 'mysql', host: 'localhost'
@@ -19,17 +18,32 @@ router.post('/', async(req,res)=>{
                         })
     console.log(checkUser)
     if (checkUser.length === 0) {
-        return res.status(404).send({message:"User Not Found"})//modif send instead of json
+        return res.send({message:"User Not Found"})//modif send instead of json
     }else {
-        bcrypt.compare(password, checkUser[0]['user_password'], (err, data) => {
+        bcrypt.compare(password, checkUser[0]['user_password'], async(err, data) => {
+                let userId =""
                 if(err) {return res.send("error verifying credentials")}
-                else if (data) {
+                else if (data) 
+                {
                     console.log("Login Successful")
-                    return  res.send({message:"Login Successful"})
-                                .redirect('/furnitures')
+
+                    let sql =`SELECT user_id FROM user WHERE user_email = '${email}'`;
+                    const user = await sequelize.query(sql, 
+                        { type: sequelize.QueryTypes.SELECT });
+
+                    console.log(user[0].user_id)
+
+                        if (user.length > 0) {
+                            userId += user[0].user_id;
+                            req.session.userId = userId;
+                            console.log(req.session.userId);
+                    }
+
+                    return  res.send({message:"Login Successful", user_id:userId})
                     
-                } else {
-                    return res.status(400).send({message:"Invalid credentials"})
+                } else 
+                {
+                    return res.send({message:"Invalid credentials"})
                 }
     })
 }})
