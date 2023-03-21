@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export const Login = ()=> {
 
   const [email, setEmail] = useState("");
   const [password , setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,17 +14,16 @@ export const Login = ()=> {
     Axios.post("http://localhost:9000/login", {
         email : email,
         password : password
-      }).then(response =>{
-        console.log(response)
+      }).then((response) => 
+      {
+        console.log(response.data.message)
+        return response.data.message}
+      )
+      .then(data =>{
+        if(data === 'Login Successful'){
+          navigate("/cart")
+        }
       })
-    }
-
-  const login = ()=>{
-      Axios.post("http://localhost:9000/login", {
-        email : email,
-        password : password
-      }).then(response =>
-        console.log(response.message))
   }
 
   return (
