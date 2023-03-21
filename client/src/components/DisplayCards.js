@@ -1,5 +1,3 @@
-
-
 export default function DisplayCards({ photo, name, type, price }) {
   // const addCart = () => {
   //   console.log('add cart')
