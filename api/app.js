@@ -1,8 +1,10 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 var furnituresRouter = require('./routes/furnitures');
 var usersRouter = require('./routes/users');
@@ -21,6 +23,13 @@ app.get('/images/:imageName', (req, res) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(session({
+  name : process.env.SESSION_NAME,
+  resave : false,
+  saveUninitialized : false,
+  secret : process.env.SESSION_SECRET
+  }));
+  
 app.use(logger('dev'));
 app.use(express.json());//parse incoming Request Object as a JSON Object
 app.use(express.urlencoded({ extended: true }));//parse incoming Request Object if object, with nested objects, or generally any type.

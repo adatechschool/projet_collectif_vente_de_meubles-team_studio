@@ -4,6 +4,15 @@ var router = express.Router();
 require('dotenv').config();
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
+const session = require('express-session');
+var app = express();
+
+app.use(session({
+  name : process.env.SESSION_NAME,
+  resave : false,
+  saveUninitialized : false,
+  secret : process.env.SESSION_SECRET
+  }));
 
 const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
 dialect: 'mysql', host: 'localhost'
@@ -21,10 +30,16 @@ router.post('/', async(req,res)=>{
     if (checkUser.length === 0) {
         return res.json({message:"User Not Found"})
     }else {
-        bcrypt.compare(password, checkUser[0]['user_password'], (err, data) => {
+        bcrypt.compare(password, checkUser[0]['user_password'], async (err, data) => {
                 if(err) {return res.json("error verifying credentials")}
                 else if (data) {
                     console.log("Login Successful")
+                    let sql = `SELECT user_id FROM user WHERE user_email = '${email}'`;
+                    const user = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT });
+                    if (user.length > 0) {
+                        const userId = user[0].user_id;
+                        req.session.userId = userId;
+                    }
                     return  res.redirect('/furnitures')
                     //return res.json({ msg: "Login successful" })
                 } else {
