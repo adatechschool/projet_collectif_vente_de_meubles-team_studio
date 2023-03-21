@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');//newly installed
+var imagesRouter = require('./routes/images');
 
 
 var furnituresRouter = require('./routes/furnitures');
@@ -30,11 +31,13 @@ app.use(express.urlencoded({ extended: true }));//parse incoming Request Object 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({ credentials: true }));//Newly added
+app.use('/images/:imageName', imagesRouter);
 
 app.use('/furnitures', furnituresRouter);
 app.use('/users', usersRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
+
 
 
 // catch 404 and forward to error handler
