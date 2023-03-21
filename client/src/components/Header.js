@@ -1,13 +1,6 @@
-import Banner from "./Banner";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom" 
 
 export default function Navbar() {
-  const showCart = () => {
-    console.log("show cart");
-  };
-  const userConnect = () => {
-    console.log("show connection");
-  };
   const searchBar = () => {
     console.log("search bar");
   };
@@ -16,25 +9,18 @@ export default function Navbar() {
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
-        <img src="./img/logo.svg" width={90} />
+        <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+            <img src="./img/logo.svg" alt="logo" width={90} />
+        </NavLink>     
       </div>
 
       <div className="flex ml-auto space-x-2">
-        <Link to="/cart">
-        <button type="button" onClick={showCart}>
-          <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
-        </button>
-        </Link>
-{/* using (Link to) component to redirect for the target page */}
-        <Link to="/login"> 
-        <button type="button" onClick={userConnect}>
-          <img
-            src="./img/user.svg"
-            className="h-5 w-5 mr-4"
-            alt="Access count"
-          />
-        </button>
-        </Link>
+          <NavLink to="/cart" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+            <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
+          </NavLink>
+          <NavLink to="/login" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+            <img src="./img/user.svg" className="h-5 w-5 mr-4"alt="Access count"/>
+          </NavLink>
 
         <form>
           <div className="relative">

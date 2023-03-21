@@ -11,7 +11,7 @@ import Data from "../util/Data" ;
     
       
         
-         <img src="./img/logo.svg" className="w-28 "/>
+         <img src="./img/logo.svg" className="w-28 " alt="logo"/>
        
         
         
