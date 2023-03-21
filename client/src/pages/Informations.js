@@ -1,24 +1,30 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
+import { useEffect, useState } from 'react';
 
 export const Informations = () => {
 
+  const [furnitureInfos, setFurnitureInfos] = useState([]);
+
   const { id } = useParams();
-  const requestFurnituresData = async () => {
-    try {
-      const res = await axios.get(`http://localhost:9000/furniture/${id}`, {
-        headers: {},
-        params: {}
-      });
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  requestFurnituresData();
-
-
+  useEffect(() => {
+    const requestFurnituresData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:9000/furniture/${id}`, {
+          headers: {},
+          params: {}
+        });
+        let furnitureById = await res.data;
+        setFurnitureInfos(furnitureById);
+        console.log(furnitureById);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    requestFurnituresData();
+  }, []);
+  console.log('furnitureInfos: ', furnitureInfos);
   return (
     <div>
       <div className=' max-w-auto  mt-10 flex items-center p-2 bg-gray-200 relative justify-center z-30'>
@@ -42,15 +48,11 @@ export const Informations = () => {
           <p className='font-bold font-worksans text-sm text-[#cca634f0]'>EXCLUSIVITY</p>
           {/* <p className='font-bold font-worksans text-sm'>FRIDA</p> */}
           </div>
-          <h2 className='font-bold text-[#151515] font-worksans text-6xl py-3'>Brown Leather Sofa</h2>
-          <p className='font-worksans text-[#151515] font-light text-justify py-4'>Lorem ipsum dolor sit amet, consectetur 
-          adipisicing elit. Quod aliquam amet laudantium cumque reprehenderit nobis. Voluptates numquam ducimus
-          illum deserunt quia iure libero architecto? Tenetur suscipit qui laudantium non accusamus, eveniet facere.
-          Commodi eveniet dolorem laudantium culpa at maiores ea omnis, illo nulla tempore, inventore harum fuga 
-          laboriosam sapiente obcaecati a provident fugit deleniti et incidunt consequatur id dolorum enim!
+          <h2 className='font-bold text-[#151515] font-worksans text-6xl py-3'>{furnitureInfos.furniture_name}</h2>
+          <p className='font-worksans text-[#151515] font-light text-justify py-4'>{furnitureInfos.furniture_description}
           </p>
 
-          <p className='font-bold font-worksans text-3xl py-2'>560€</p>
+          <p className='font-bold font-worksans text-3xl py-2'>{furnitureInfos.furniture_price}</p>
 
           <div className='grid grid-cols-1 font-bold py-4'>
             {/* <div className='col-span-3 bg-gray-200 flex items-center justify-between rounded-sm py-3 px-5 md:col-span-1'>
