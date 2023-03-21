@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 var router = express.Router();
 const app = express();
 require('dotenv').config();
+const path = require('path');
 
 const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
   dialect: 'mysql', host: 'localhost'
@@ -16,7 +17,11 @@ router.get('/furniture/:id', (req, res, next) => {
         sequelize.query(sql)
         .then(([result]) => {
               result = CreateArrayOfImage(result)
-              res.send(result)})
+              res.send(result)
+              // let imageName = result.image_name[0]
+              // res.sendFile(path.join(__dirname, 'public/images', imageName));
+            })
+
   } catch (error) {  console.error('Impossible de se connecter, erreur suivante :', error); }
 })
 
@@ -26,6 +31,7 @@ const CreateArrayOfImage = (object) => {
         resultObject.image_name += ' ' +object[i].image_name;
     }
     resultObject.image_name = resultObject.image_name.split(' ');
+
     return resultObject;
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
 import { useEffect, useState } from 'react';
+import InformationImages from '../components/InformationImages';
 
 export const Informations = () => {
 
@@ -23,7 +24,10 @@ export const Informations = () => {
       }
     };
     requestFurnituresData();
-  }, []);
+  }, [id]);
+
+  console.log(furnitureInfos.image_name)
+
   console.log('furnitureInfos: ', furnitureInfos);
   return (
     <div>
@@ -31,17 +35,12 @@ export const Informations = () => {
           <p className='font-worksans font-normal text-[#565656] flex items-center'>Fidelity Offer With The Comfy Studio Card : +10% On Every Sell* </p>
         </div>
       <div className='grid grid-cols-1 gap-8 md:grid-cols-2 my-10 mx-24'>
-        <div>
-          <div className='col-span-4'>
-            <img src="./products/sofa-brown-1.jpg" alt="/" />
-          </div>
-          <div className='grid grid-cols-4 gap-4 md:grid-cols-4 my-6 '>
-            <img className='hover:scale-150 duration-500 border border-white' src="./products/sofa-brown-1.jpg" alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src="./products/sofa-brown-2.jpg" alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src="./products/sofa-brown-3.jpg" alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src="./products/sofa-brown-4.jpg" alt="/" width={120}/>
-          </div>
-        </div>
+
+        {furnitureInfos.map((info) => (
+          <InformationImages id = {info.furniture_id}
+          photo = {info.image_name}/>
+        ))}
+        
         <div className='container mx-auto px-4'>
         <div className='grid grid-cols-2'>
           {/* <img src="./products/clients/avatar.svg" alt="/" width={40}/> */}
