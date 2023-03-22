@@ -16,10 +16,11 @@ router.post('/user/:user_id/order', (req, res, next) => {
     const user_id = parseInt(req.params.user_id);
     console.log(user_id);
     try {
-        let sql = `INSERT INTO 'order' (order_id, order_date, order_user_id) VALUES (NULL, NOW(), ${user_id});`;
+        let sql = `INSERT INTO 'order' (order_id, order_date, order_total_price, order_user_id) VALUES (NULL, NULL, NULL, ${user_id});`;
         sequelize.query(sql, {
             type: sequelize.QueryTypes.INSERT
         }).then(data => {
+            console.log(data);
             if (data) {
                 console.log('Order added.')
             }

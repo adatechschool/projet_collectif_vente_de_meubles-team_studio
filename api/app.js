@@ -8,7 +8,8 @@ var furnituresRouter = require('./routes/furnitures');
 var usersRouter = require('./routes/users');
 var registrationRouter = require('./routes/registration');
 var loginRouter = require('./routes/login');
-var imagesRouter = require('./routes/images')
+var imagesRouter = require('./routes/images');
+var ordersRouter = require('./routes/orders');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/images/:imageName', imagesRouter);
+app.use('/user/:user_id/order', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
