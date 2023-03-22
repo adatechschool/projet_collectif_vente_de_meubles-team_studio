@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from '../components/Banner'
 import DisplayCards from '../components/DisplayCards'
 import { useState, useEffect } from "react";
+import FilterCards from '../components/FilterCards';
 
 
 export const Home = () => {
@@ -31,6 +32,7 @@ export const Home = () => {
   return (
     <div>
       <Banner />
+      <FilterCards />
       <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
         {furnitures && furnitures.map((furniture, index) => (
 
