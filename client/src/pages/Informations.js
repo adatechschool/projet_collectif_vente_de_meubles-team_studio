@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
 import { useEffect, useState } from 'react';
-// import InformationImages from '../components/InformationImages';
+import cart from '../assets/cart.svg';
 
 export const Informations = () => {
 
@@ -63,7 +63,7 @@ export const Informations = () => {
           <p className='font-worksans text-[#151515] font-light text-justify py-4'>{furnitureInfos.furniture_description}
           </p>
 
-          <p className='font-bold font-worksans text-3xl py-2'>{furnitureInfos.furniture_price}</p>
+          <p className='font-bold font-worksans text-3xl py-2'>{furnitureInfos.furniture_price}€</p>
 
           <div className='grid grid-cols-1 font-bold py-4'>
             {/* <div className='col-span-3 bg-gray-200 flex items-center justify-between rounded-sm py-3 px-5 md:col-span-1'>
@@ -73,7 +73,7 @@ export const Informations = () => {
             </div> */}
             <button className='flex items-center gap-x-3 bg-[#151515] text-white text-sm 
             justify-center py-3 rounded-sm hover:bg-[#262626]'>
-              <img src="./products/cart.svg" alt="/" width={25}/>
+              <img src={cart} alt="/" width={25}/>
               <span>ADD TO CART</span>
             </button>
           </div>
