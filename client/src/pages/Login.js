@@ -9,6 +9,7 @@ export const Login = ()=> {
   const [email, setEmail] = useState("");
   const [password , setPassword] = useState("");
   const [loginstatus, setLoginStatus] = useState("false");
+  const [response, setResponse] = useState("")
   const navigate = useNavigate();
 
   Axios.defaults.withCredentials = true;
@@ -25,22 +26,22 @@ export const Login = ()=> {
         return response.data.message
       }
       )
-      // .then(data =>{
-      //   if(data === 'Login Successful'){
-      //     navigate("/")
-      //   }
-      //   else if(data ==='Invalid credentials'){
-          
-      //   }
-      // }
-      // )
+      .then(data =>{
+        if(data === 'Login Successful'){
+          navigate("/")
+        }
+        else{
+          setResponse(data)
+        }
+      }
+      )
   }
 
   useEffect(() => {
     Axios.get("http://localhost:9000/login")
     .then((response) => {
       console.log(response)
-      if (response.data.loggedIn == true) {
+      if (response.data.loggedIn === true) {
         setLoginStatus(response.data.user[0].user_first_name);
       }
     });
@@ -67,7 +68,7 @@ export const Login = ()=> {
               <input className='border p-2 text-black focus:outline-none focus:border-black focus:ring-1 focus:ring-white' type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <div>
-              {/* add the invalid credentials */}
+                <h5 className='text-orange-700 text-sm'>{response}</h5>
             </div>
             <button className='border w-full my-8 py-2 bg-[#151515] text-white font-medium border-none hover:bg-[#353535]' type='submit'>SIGN IN</button>
             <div className='flex justify-between'>
