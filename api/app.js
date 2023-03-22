@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');//newly installed
 var imagesRouter = require('./routes/images');
+var session = require('express-session');
 
 
 var furnituresRouter = require('./routes/furnitures');
@@ -20,12 +22,26 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(session({
+  name : process.env.SESSION_NAME,
+  resave : false,
+  saveUninitialized : false,
+  secret : process.env.SESSION_SECRET,
+  cookie: {
+    expires: 60 * 60 * 24,
+  }
+  }),
+  );
+
+
 app.use(logger('dev'));
 app.use(express.json());//parse incoming Request Object as a JSON Object
 app.use(express.urlencoded({ extended: true }));//parse incoming Request Object if object, with nested objects, or generally any type.
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({ credentials: true }));//Newly added
+app.use(cors({ 
+  origin: "http://localhost:3000",
+  credentials: true }))//Newly added
 app.use('/images/:imageName', imagesRouter);
 
 app.use('/furnitures', furnituresRouter);

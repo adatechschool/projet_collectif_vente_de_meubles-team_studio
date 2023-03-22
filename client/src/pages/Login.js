@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -8,7 +8,10 @@ export const Login = ()=> {
 
   const [email, setEmail] = useState("");
   const [password , setPassword] = useState("");
+  const [loginstatus, setLoginStatus] = useState("false");
   const navigate = useNavigate();
+
+  Axios.defaults.withCredentials = true;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,16 +22,29 @@ export const Login = ()=> {
       }).then((response) => 
       {
         console.log(response.data.message)
-        return response.data.message}
+        return response.data.message
+      }
       )
-      .then(data =>{
-        if(data === 'Login Successful'){
-          navigate("/")
-        }else if(data ==='Invalid credentials'){
+      // .then(data =>{
+      //   if(data === 'Login Successful'){
+      //     navigate("/")
+      //   }
+      //   else if(data ==='Invalid credentials'){
           
-        }
-      })
+      //   }
+      // }
+      // )
   }
+
+  useEffect(() => {
+    Axios.get("http://localhost:9000/login")
+    .then((response) => {
+      console.log(response)
+      if (response.data.loggedIn == true) {
+        setLoginStatus(response.data.user[0].user_first_name);
+      }
+    });
+  }, []);
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
