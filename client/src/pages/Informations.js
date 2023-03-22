@@ -27,6 +27,8 @@ export const Informations = () => {
         });
         let furnitureById = await res.data;
         setFurnitureInfos(furnitureById);
+        console.log(furnitureById);
+        setCurrentImage(`http://localhost:9000/images/${furnitureById.image_name[0]}.jpg`)
       } catch (err) {
         console.log(err);
       }
@@ -43,6 +45,7 @@ export const Informations = () => {
     }
   }
 
+  const [currentImage, setCurrentImage] = useState()
 
   return (
     <div>
@@ -52,13 +55,13 @@ export const Informations = () => {
       <div className='grid grid-cols-1 gap-8 md:grid-cols-2 my-10 mx-24'>
       <div>
           <div className='col-span-4'>
-            <img src={`http://localhost:9000/images/${furnitureInfos.image_name[0]}.jpg`} alt="/" />
+            <img src={currentImage} alt="/" />
           </div>
           <div className='grid grid-cols-4 gap-4 md:grid-cols-4 my-6 '>
-            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[0]}.jpg`} alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[1]}.jpg`} alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[2]}.jpg`} alt="/" width={120}/>
-            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[3]}.jpg`} alt="/" width={120}/>
+            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[0]}.jpg`} alt="/" width={120} onClick={() => setCurrentImage(`http://localhost:9000/images/${furnitureInfos.image_name[0]}.jpg`)}/>
+            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[1]}.jpg`} alt="/" width={120} onClick={() => setCurrentImage(`http://localhost:9000/images/${furnitureInfos.image_name[1]}.jpg`)}/>
+            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[2]}.jpg`} alt="/" width={120} onClick={() => setCurrentImage(`http://localhost:9000/images/${furnitureInfos.image_name[2]}.jpg`)}/>
+            <img className='hover:scale-150 duration-500 border border-white' src={`http://localhost:9000/images/${furnitureInfos.image_name[3]}.jpg`} alt="/" width={120} onClick={() => setCurrentImage(`http://localhost:9000/images/${furnitureInfos.image_name[3]}.jpg`)}/>
           </div>
         </div>  
         <div className='container mx-auto px-4'>
