@@ -35,6 +35,14 @@ export const Informations = () => {
   }, [id]);
   console.log(furnitureInfos);
 
+  const isInStock = (stock) => {
+    if (stock > 0){
+      return <div className='text-[#72f954] text-base'>In Stock ✅</div>
+    } else {
+      return <div className='text-[#d84040] text-base'>Out of stock 🚨</div>
+    }
+  }
+
 
   return (
     <div>
@@ -60,10 +68,12 @@ export const Informations = () => {
           {/* <p className='font-bold font-worksans text-sm'>FRIDA</p> */}
           </div>
           <h2 className='font-bold text-[#151515] font-worksans text-6xl py-3'>{furnitureInfos.furniture_name}</h2>
+          <p className='text-[#7a7a7a] text-xs'>{furnitureInfos.furniture_dimension}</p>
           <p className='font-worksans text-[#151515] font-light text-justify py-4'>{furnitureInfos.furniture_description}
           </p>
 
-          <p className='font-bold font-worksans text-3xl py-2'>{furnitureInfos.furniture_price}€</p>
+          <p className='font-bold font-worksans text-3xl py-1'>{furnitureInfos.furniture_price}€</p>
+          {isInStock(furnitureInfos.furniture_stock)}
 
           <div className='grid grid-cols-1 font-bold py-4'>
             {/* <div className='col-span-3 bg-gray-200 flex items-center justify-between rounded-sm py-3 px-5 md:col-span-1'>
