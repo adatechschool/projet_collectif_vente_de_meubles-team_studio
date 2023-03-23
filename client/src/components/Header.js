@@ -1,26 +1,49 @@
-import { NavLink } from "react-router-dom" 
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export default function Navbar() {
   const searchBar = () => {
     console.log("search bar");
   };
 
+  const { user } = useContext(UserContext);
+
   return (
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
         <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-            <img src="./img/logo.svg" alt="logo" width={90} />
-        </NavLink>     
+          <img src="./img/logo.svg" alt="logo" width={90} />
+        </NavLink>
       </div>
 
       <div className="flex ml-auto space-x-2">
-          <NavLink to="/cart" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-            <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
-          </NavLink>
-          <NavLink to="/login" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-            <img src="./img/user.svg" className="h-5 w-5 mr-4"alt="Access count"/>
-          </NavLink>
+        <NavLink
+          to="/cart"
+          className={(nav) => (nav.isActive ? "nav-active" : "")}
+        >
+          <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
+        </NavLink>
+        <NavLink
+          to={user ? "/acount" : "/login"}
+          className={(nav) => (nav.isActive ? "nav-active" : "")}
+        >
+          <img
+            src="./img/user.svg"
+            className="h-5 w-5 mr-4"
+            alt="Access count"
+          />
+        </NavLink>
+        <div>
+          {!!user && (
+            <div className="ml-0.5 pr-2 py-0.5">
+              <h5 className="text-green-700 text-sm">
+                {user[0]["user_first_name"]}
+              </h5>
+            </div>
+          )}
+        </div>
 
         <form>
           <div className="relative">

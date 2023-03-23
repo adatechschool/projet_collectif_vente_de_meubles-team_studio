@@ -3,6 +3,8 @@ const { Sequelize } = require('sequelize');
 var router = express.Router();
 const app = express();
 require('dotenv').config();
+// const checksession = require('../middleware/checksession')
+
 //console.log(process.env)
 
 const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
@@ -10,7 +12,7 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
 });
 
 /* GET home page. */
-router.get('/' , (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
         let sql = "SELECT furniture.furniture_Id, image.image_name, furniture.furniture_name, furniture.furniture_type, furniture.furniture_price, furniture.furniture_stock, furniture.furniture_description, furniture.furniture_dimension FROM furniture INNER JOIN image ON furniture.furniture_id = image.image_furniture_id;"
         sequelize.query(sql)
@@ -18,6 +20,7 @@ router.get('/' , (req, res, next) => {
           console.log(result)
           result = createArrayOfImagesFromResultJsonObject(result);
               console.log(result)
+              console.log(req.sessionID)
               res.send(result)})
   } catch (error) {  console.error('Impossible de se connecter, erreur suivante :', error); }
 });
@@ -41,6 +44,9 @@ const createArrayOfImagesFromResultJsonObject = (object) => {
   }
   return result;
 }
+
+
+// router.use(checksession);
 
 module.exports = router;
 

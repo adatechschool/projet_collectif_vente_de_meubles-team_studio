@@ -1,32 +1,35 @@
-import './App.css';
+import "./App.css";
 // import DisplayCards from './components/DisplayCards';
-import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import { Login } from './pages/Login';
-import { Contact } from './pages/Contact';
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import { Login } from "./pages/Login";
+import { Contact } from "./pages/Contact";
 // import Fetching from './components/Fetching';
-import { Cart } from './pages/Cart';
-import { Informations } from './pages/Informations'
-import Footer from './components/Footer';
-import {Registration} from './pages/Registration'
-import { Home } from './pages/Home';
-
+import { Cart } from "./pages/Cart";
+import { Informations } from "./pages/Informations";
+import Footer from "./components/Footer";
+import { Registration } from "./pages/Registration";
+import { Home } from "./pages/Home";
+import { UserContextProvider } from "./components/UserContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/informations' element={<Informations />} />
-        <Route path='/Contact' element={<Contact />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='*' element={<Home/>} />
-        <Route path='/register' element={<Registration/>}/>
-      </Routes>
-
-      <Footer />
+      <UserContextProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/informations" element={<Informations />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/register" element={<Registration />} />
+        </Routes>
+        <Footer />
+      </UserContextProvider>
     </div>
   );
 }
