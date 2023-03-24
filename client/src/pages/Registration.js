@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { Navigate, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export function Registration() {
   const [email, setEmail] = useState("");
