@@ -1,5 +1,6 @@
 import React from 'react'
 import Banner from '../components/Banner'
+import axios from 'axios';
 import DisplayCards from '../components/DisplayCards'
 import { useState, useEffect } from "react";
 
@@ -12,29 +13,32 @@ export const Home = () => {
     const url = `http://localhost:9000/furnitures`
     console.log(url)
 
-    const fetchdata = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(url)
-        console.log(response)
+        const res = await axios.get(url, {
+          headers: {},
+          params: {}
+        });
+        const response = await res.data
+        setFurnitures(response)
+        // console.log(order.image_name)
 
-        const json_response = await response.json()
-        setFurnitures(json_response)
-        console.log(json_response)
-      } catch {
-        console.log('error fetching furnitures')
+      } catch (err) {
+        console.log(err);
       }
-    }
-    fetchdata()
+    };
+    fetchData()
   }, [])
 
+  // console.log(furnitures[0])
 
   return (
     <div>
       <Banner />
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
         {furnitures && furnitures.map((furniture, index) => (
 
-          <DisplayCards key={`${furniture.name}-${index}`}
+          <DisplayCards key={`${furniture.furniture_name}-${index}`}
             photo={furniture.image_name[0]}
             name={furniture.furniture_name}
             type={furniture.furniture_type}
