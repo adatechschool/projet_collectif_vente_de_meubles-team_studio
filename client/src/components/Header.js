@@ -62,26 +62,16 @@ export function Navbar() {
             <button
               type="submit"
               className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
-            >
+              >
               <img
                 src={glass}
                 className="absolute left-1 bottom-1 h-4 w-4"
                 alt="Search Bar"
               />
-              <button
-                type="submit"
-                className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
-              >
-                <img
-                  src="./img/magnifyng_glass.png"
-                  className="absolute left-1 bottom-1 h-4 w-4"
-                  alt="Search Bar"
-                />
               </button>
             </div>
           </form>
         </div>
       </div>
-    </div>
   );
 }

@@ -2,6 +2,7 @@
 import { NavLink } from "react-router-dom" 
 import { FaFacebookSquare, FaTwitterSquare, FaInstagram } from "react-icons/fa";
 import Data from "../util/Data" ;
+import logo from "../assets/logo.svg";
   export function Footer() {
 
   
@@ -12,7 +13,7 @@ import Data from "../util/Data" ;
 
     <div className="mt-2 mb-2 flex place-items-center">
       <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-        <img src="./img/logo.svg" alt="logo" width={90} />
+        <img src={logo} alt="logo" width={90}/>
       </NavLink>
     </div>
     
@@ -47,11 +48,11 @@ import Data from "../util/Data" ;
       </div>
     </div>
     
-    <div className="mt-2 mb-2 flex flex-col justify-between">
+    <div className="mt-2 mb-2 flex flex-col w-full md:w-1/4 justify-between">
       <form>
         <div className="flex flex-col place-items-center md:flex-row space-x-3">
-          <input type="text" placeholder="EMAIL" className="flex-1 w-2/3 md:w-auto px-4 rounded-full focus:outline-none"/>
-          <button className="w-1/2 md:w-24 py-2 text-white rounded-full bg-[#575555] hover:bg-slate-500 focus:outline-none">subscribe</button>
+          <input type="text" placeholder="EMAIL" className="flex-1 w-2/3 md:w-auto px-4 mb-2 rounded-full focus:outline-none"/>
+          <button className="w-1/2 md:w-24 py-2 text-white rounded-full bg-[#575555] mb-2 hover:bg-slate-500 focus:outline-none">subscribe</button>
         </div>
       </form>
       <div className="text-white md:block">
