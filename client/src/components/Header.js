@@ -6,7 +6,7 @@ import glass from "../assets/magnifyng_glass.png";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
-export default function Navbar() {
+export function Navbar() {
   const searchBar = () => {
     console.log("search bar");
   };
@@ -16,7 +16,7 @@ export default function Navbar() {
   console.log(user);
 
   return (
-    <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
+    <div className="bg-[#151515] relative h-16 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
         <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
@@ -62,16 +62,16 @@ export default function Navbar() {
             <button
               type="submit"
               className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
-            >
+              >
               <img
                 src={glass}
                 className="absolute left-1 bottom-1 h-4 w-4"
                 alt="Search Bar"
               />
-            </button>
-          </div>
-        </form>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
   );
 }
