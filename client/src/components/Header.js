@@ -6,7 +6,7 @@ import glass from "../assets/magnifyng_glass.png";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
-export function Navbar() {
+export function Header() {
   const searchBar = () => {
     console.log("search bar");
   };
@@ -62,16 +62,16 @@ export function Navbar() {
             <button
               type="submit"
               className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
-              >
+            >
               <img
                 src={glass}
                 className="absolute left-1 bottom-1 h-4 w-4"
                 alt="Search Bar"
               />
-              </button>
-            </div>
-          </form>
-        </div>
+            </button>
+          </div>
+        </form>
       </div>
+    </div>
   );
 }
