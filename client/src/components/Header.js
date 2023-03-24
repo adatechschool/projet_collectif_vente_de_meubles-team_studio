@@ -40,7 +40,7 @@ export default function Navbar() {
         <div>
           {!!user && (
             <div className="ml-0.5 pr-2 py-0.5">
-              <h5 className="text-green-700 text-sm">
+              <h5 className="text-white text-sm">
                 {user[0]["user_first_name"]}
               </h5>
             </div>

@@ -28,7 +28,7 @@ export default function DisplayCards({ photo, name, type, price, id }) {
               </div>
               <p className="text-sm font-medium text-gray-900">{price}€</p>
             </div>
-            <button type="submit" className="scale-100 mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-stone-200 py-3 px-8 text-sm text-gray-700 text-black hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+            <button type="submit" className="scale-100 mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-stone-200 py-3 px-8 text-sm text-gray-700 text-black hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-offset-2">Add to bag</button>
           </div>
         </div>
       </div>
