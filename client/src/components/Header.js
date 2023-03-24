@@ -1,51 +1,54 @@
 import { NavLink } from "react-router-dom" 
 
-export default function Navbar() {
+export function Navbar() {
   const searchBar = () => {
     console.log("search bar");
   };
 
   return (
-    <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
+    <div className="bg-[#151515] relative h-16 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
         <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
             <img src="./img/logo.svg" alt="logo" width={90} />
-        </NavLink>     
+        </NavLink>
+        <div className="white"></div>
       </div>
 
       <div className="flex ml-auto space-x-2">
+        <div className="flex block ">
           <NavLink to="/cart" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-            <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
-          </NavLink>
-          <NavLink to="/login" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-            <img src="./img/user.svg" className="h-5 w-5 mr-4"alt="Access count"/>
-          </NavLink>
+              <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
+            </NavLink>
+            <NavLink to="/login" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+              <img src="./img/user.svg" className="h-5 w-5 mr-4"alt="Access count"/>
+            </NavLink>
 
-        <form>
-          <div className="relative">
-            <div className="h-0 w-0"></div>
-            <input
-              type="search"
-              onClick={searchBar}
-              id="default-search"
-              className="block w-full p-1
-         pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-black-800 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white"
-              placeholder=" Search furnitures..."
-              required
-            />
-            <button
-              type="submit"
-              className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
-            >
-              <img
-                src="./img/magnifyng_glass.png"
-                className="absolute left-1 bottom-1 h-4 w-4"
-                alt="Search Bar"
+          <form>
+            <div className="relative">
+              <div className="h-0 w-0"></div>
+              <input
+                type="search"
+                onClick={searchBar}
+                id="default-search"
+                className="block w-full p-1
+          pl-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-black-800 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white"
+                placeholder=" Search furnitures..."
+                required
               />
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
+              >
+                <img
+                  src="./img/magnifyng_glass.png"
+                  className="absolute left-1 bottom-1 h-4 w-4"
+                  alt="Search Bar"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
