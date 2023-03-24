@@ -8,9 +8,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  //const [loginstatus, setLoginStatus] = useState(false);
   const [response, setResponse] = useState("");
-  //const navigate = useNavigate();
 
   const { setUser } = useContext(UserContext);
 
@@ -24,6 +22,7 @@ export const Login = () => {
       password: password,
     });
     console.log(userInfo);
+
     setUser(userInfo.data.checkUser);
     let message = userInfo.data.message;
     if (message === "Login Successful") {
@@ -32,15 +31,6 @@ export const Login = () => {
       setResponse(message);
     }
   }
-
-  // useEffect(() => {
-  //   Axios.get("http://localhost:9000/login").then((response) => {
-  //     console.log(response);
-  //     if (response.data.loggedIn === true) {
-  //       setLoginStatus(response.data.user[0].user_first_name);
-  //     }
-  //   });
-  // }, []);
 
   if (redirect) {
     return <Navigate to={"/"} />;

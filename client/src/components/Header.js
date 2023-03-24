@@ -9,6 +9,8 @@ export default function Navbar() {
 
   const { user } = useContext(UserContext);
 
+  console.log(user);
+
   return (
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
       {/* [] pour couleur hexadécimale */}
@@ -26,7 +28,7 @@ export default function Navbar() {
           <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
         </NavLink>
         <NavLink
-          to={user ? "/acount" : "/login"}
+          to={!user ? "/login" : "/account"}
           className={(nav) => (nav.isActive ? "nav-active" : "")}
         >
           <img

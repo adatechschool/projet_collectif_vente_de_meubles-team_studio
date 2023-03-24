@@ -15,6 +15,7 @@ var registrationRouter = require("./routes/registration");
 var loginRouter = require("./routes/login");
 var imagesRouter = require("./routes/images");
 var profileRouter = require("./routes/profile");
+var logoutRouter = require("./routes/logout");
 
 var app = express();
 
@@ -53,6 +54,7 @@ app.use("/users", usersRouter);
 app.use("/registration", registrationRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
+app.use("/logout", logoutRouter);
 app.use("/images/:imageName", imagesRouter);
 
 // catch 404 and forward to error handler

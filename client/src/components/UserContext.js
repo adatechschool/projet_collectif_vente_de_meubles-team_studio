@@ -5,18 +5,16 @@ import axios from "axios";
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(false);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!user) {
-      axios
-        .get("http://localhost:9000/profile", { withCredentials: true })
-        .then((result) => {
-          console.log([result.data]);
-          setUser([result.data]);
-          setReady(true);
-        });
+      axios.get("http://localhost:9000/profile").then((result) => {
+        console.log([result.data]);
+        setUser([result.data]);
+        setReady(true);
+      });
       console.log(user);
     }
   }, [user]);

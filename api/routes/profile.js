@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
       res.json(user);
     });
   } else {
-    res.json(null);
+    res.json({});
   }
 });
 

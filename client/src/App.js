@@ -11,8 +11,7 @@ import Footer from "./components/Footer";
 import { Registration } from "./pages/Registration";
 import { Home } from "./pages/Home";
 import { UserContextProvider } from "./components/UserContext";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -27,6 +26,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Home />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
         <Footer />
       </UserContextProvider>
