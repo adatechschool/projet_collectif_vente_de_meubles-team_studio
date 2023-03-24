@@ -1,4 +1,4 @@
-export default function DisplayCards({ photo, name, type, price }) {
+export default function DisplayCards({ photo, name, type, price, id }) {
   // const addCart = () => {
   //   console.log('add cart')
   // };
@@ -6,17 +6,20 @@ export default function DisplayCards({ photo, name, type, price }) {
   return (
     <div className="p-8 ">
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 transition delay-150 duration-300 ease-in-out">
+        <div className="mx-auto max-w-2xl py-8 px-4 lg:max-w-7xl lg:px-8 transition delay-150 duration-300 ease-in-out">
 
 
           <div className="group">
-            <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-              <img src={`http://localhost:9000/images/${photo}.jpg`} alt={`${type}`} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
-            </div>
+            <a href={`http://localhost:3000/informations/${id}`}>
+              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                <img src={`http://localhost:9000/images/${photo}.jpg`} alt={`${type}`} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+              </div>
+            </a>
+
             <div className="mt-4 flex justify-between">
               <div>
                 <h3 className="text-sm text-gray-700">
-                  <a href="link">
+                  <a href={`http://localhost:3000/informations/${id}`}>
                     <span aria-hidden="true" className="absolute inset-0"></span>
                     {name}
                   </a>

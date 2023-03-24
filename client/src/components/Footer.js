@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router-dom" 
 import { FaFacebookSquare, FaTwitterSquare, FaInstagram } from "react-icons/fa";
 import Data from "../util/Data" ;
@@ -61,13 +62,10 @@ import Data from "../util/Data" ;
   </div>
      
 
-   
-    
-    
-
-    
 
 
 
-)
+
+
+  )
 }
