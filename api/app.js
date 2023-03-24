@@ -10,6 +10,7 @@ var registrationRouter = require('./routes/registration');
 var loginRouter = require('./routes/login');
 var imagesRouter = require('./routes/images');
 var ordersRouter = require('./routes/orders');
+var cartRouter = require('./routes/cart')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/images/:imageName', imagesRouter);
 app.use('/', ordersRouter);
+app.use('/', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
