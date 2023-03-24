@@ -3,7 +3,7 @@ import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Banner from '../components/Banner'
+import img from '../assets/loginimage.jpg'
 
 export default function Account() {
   const [redirect, setRedirect] = useState(null);
@@ -29,9 +29,9 @@ export default function Account() {
   return (
 
     <div>
-
-      <Banner />
-
+      <div className='max-h-[800px] relative'>
+        <img className='w-full max-h-[600px] object-cover' src={img} alt="couch" />
+      </div>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 
         <div className="py-6 max-w-md space-y-8 ">

@@ -1,13 +1,13 @@
 import "./App.css";
 // import DisplayCards from './components/DisplayCards';
 import { Routes, Route } from 'react-router-dom';
-import {Navbar} from './components/Header';
+import { Header } from './components/Header';
 import { Login } from './pages/Login';
 import { Contact } from './pages/Contact';
 // import Fetching from './components/Fetching';
 import { Cart } from './pages/Cart';
 import { Informations } from './pages/Informations'
-import {Footer} from './components/Footer';
+import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Registration } from "./pages/Registration";
 import { UserContextProvider } from "./components/UserContext";
@@ -18,10 +18,8 @@ function App() {
   return (
     <div>
 
-      
-
       <UserContextProvider>
-       <Navbar />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
