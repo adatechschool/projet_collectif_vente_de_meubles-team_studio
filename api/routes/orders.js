@@ -1,7 +1,7 @@
 var express = require('express');
 const { Sequelize } = require('sequelize');
 var router = express.Router();
-const app = express();
+// const app = express();
 require('dotenv').config();
 const bodyParser = require('body-parser')
 
@@ -10,22 +10,29 @@ const sequelize = new Sequelize(process.env.database, process.env.user, process.
     dialect: 'mysql', host: 'localhost'
 });
 
-router.use(bodyParser.urlencoded({ extended: true}));
+router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post('/user/:user_id/order', (req, res, next) => {
+router.post('/order/:user_id', async (req, res) => {
+
     const user_id = parseInt(req.params.user_id);
     console.log(user_id);
-    try {
-        let sql = `INSERT INTO 'order' (order_id, order_date, order_total_price, order_user_id) VALUES (NULL, NULL, NULL, ${user_id});`;
-        sequelize.query(sql, {
-            type: sequelize.QueryTypes.INSERT
-        }).then(data => {
-            console.log(data);
-            if (data) {
-                console.log('Order added.')
-            }
-        })
-    } catch (error) { console.error('Impossible de se connecter, erreur suivante:', error); }
+    // res.send(user_id)
+
+    const { orderId, orderDate, orderTotalPrice } = req.body;
+
+    let sql = `INSERT INTO furniture_project.order (order_id, order_date, order_total_price, order_user_id) VALUES(${orderId}, '${orderDate}', ${orderTotalPrice}, ${user_id})`;
+
+    await sequelize.query(sql, {
+        type: sequelize.QueryTypes.INSERT
+    }).then(() => {
+        res.json({ message: "Order added." })
+    }).catch((err) => {
+        console.log(err)
+        res.json({ message: "error adding order" })
+    })
+
+
+
 });
 
 module.exports = router;

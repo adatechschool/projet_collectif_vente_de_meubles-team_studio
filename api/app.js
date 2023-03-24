@@ -28,7 +28,7 @@ app.use('/users', usersRouter);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/images/:imageName', imagesRouter);
-app.use('/user/:user_id/order', ordersRouter);
+app.use('/', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
