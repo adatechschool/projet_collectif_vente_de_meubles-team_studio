@@ -16,20 +16,19 @@ import Account from "./pages/Account";
 function App() {
   return (
     <div>
-      <UserContextProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/informations" element={<Informations />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<Home />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/account" element={<Account />} />
-        </Routes>
-        <Footer />
-      </UserContextProvider>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/informations/:id" element={<Informations />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<Home />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/account" element={<Account />} />
+      </Routes>
+
+      <Footer />
     </div>
   );
 }

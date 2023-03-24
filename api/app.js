@@ -6,8 +6,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors"); //newly installed
 var imagesRouter = require("./routes/images");
-// var session = require('express-session');
-// const store = new session.MemoryStore();
 
 var furnituresRouter = require("./routes/furnitures");
 var usersRouter = require("./routes/users");
@@ -16,6 +14,9 @@ var loginRouter = require("./routes/login");
 var imagesRouter = require("./routes/images");
 var profileRouter = require("./routes/profile");
 var logoutRouter = require("./routes/logout");
+var furnitureIdRouter = require("./routes/furnitureId");
+var furnitureTypeRouter = require("./routes/furnituresType");
+var adminRouter = require("./routes/admin");
 
 var app = express();
 
@@ -53,9 +54,12 @@ app.use("/furnitures", furnituresRouter);
 app.use("/users", usersRouter);
 app.use("/registration", registrationRouter);
 app.use("/login", loginRouter);
+app.use("/images/:imageName", imagesRouter);
+app.use("/admin", adminRouter);
+app.use("/", furnitureIdRouter);
+app.use("/", furnitureTypeRouter);
 app.use("/profile", profileRouter);
 app.use("/logout", logoutRouter);
-app.use("/images/:imageName", imagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

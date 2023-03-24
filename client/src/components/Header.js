@@ -1,6 +1,10 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.svg";
+import cart from "../assets/cart.svg";
+import userLogo from "../assets/user.svg";
+import glass from "../assets/magnifyng_glass.png";
 import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 export default function Navbar() {
   const searchBar = () => {
@@ -16,7 +20,7 @@ export default function Navbar() {
       {/* [] pour couleur hexadécimale */}
       <div className="flex items-center absolute">
         <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-          <img src="./img/logo.svg" alt="logo" width={90} />
+          <img src={logo} alt="logo" width={90} />
         </NavLink>
       </div>
 
@@ -25,17 +29,13 @@ export default function Navbar() {
           to="/cart"
           className={(nav) => (nav.isActive ? "nav-active" : "")}
         >
-          <img src="./img/cart.svg" className="h-5 w-5 " alt="Access cart" />
+          <img src={cart} className="h-5 w-5 " alt="Access cart" />
         </NavLink>
         <NavLink
           to={!user ? "/login" : "/account"}
           className={(nav) => (nav.isActive ? "nav-active" : "")}
         >
-          <img
-            src="./img/user.svg"
-            className="h-5 w-5 mr-4"
-            alt="Access count"
-          />
+          <img src={userLogo} className="h-5 w-5 mr-4" alt="Access count" />
         </NavLink>
         <div>
           {!!user && (
@@ -64,7 +64,7 @@ export default function Navbar() {
               className="absolute right-1 bottom-1 text-white  bg-[#151515] focus:ring-3 focus:outline-none focus:ring-[#151515] font-small rounded-lg text-sm px-3 py-3 dark:[#151515]"
             >
               <img
-                src="./img/magnifyng_glass.png"
+                src={glass}
                 className="absolute left-1 bottom-1 h-4 w-4"
                 alt="Search Bar"
               />

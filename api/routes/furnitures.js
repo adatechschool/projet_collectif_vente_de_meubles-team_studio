@@ -3,9 +3,13 @@ const { Sequelize } = require('sequelize');
 var router = express.Router();
 const app = express();
 require('dotenv').config();
+<<<<<<< HEAD
 // const checksession = require('../middleware/checksession')
 
 //console.log(process.env)
+=======
+// console.log(process.env)
+>>>>>>> origin/master
 
 const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
   dialect: 'mysql', host: 'localhost'
@@ -49,4 +53,5 @@ const createArrayOfImagesFromResultJsonObject = (object) => {
 // router.use(checksession);
 
 module.exports = router;
+
 
