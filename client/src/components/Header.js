@@ -1,13 +1,19 @@
-import { NavLink } from "react-router-dom"
-import logo from "../assets/logo.svg"
-import cart from "../assets/cart.svg"
-import userLogo from "../assets/user.svg"
-import glass from "../assets/magnifyng_glass.png"
+import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.svg";
+import cart from "../assets/cart.svg";
+import userLogo from "../assets/user.svg";
+import glass from "../assets/magnifyng_glass.png";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 export default function Navbar() {
   const searchBar = () => {
     console.log("search bar");
   };
+
+  const { user } = useContext(UserContext);
+
+  console.log(user);
 
   return (
     <div className="bg-[#151515] relative h-10 items-center justify-center flex z-50">
@@ -19,12 +25,27 @@ export default function Navbar() {
       </div>
 
       <div className="flex ml-auto space-x-2">
-        <NavLink to="/cart" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+        <NavLink
+          to="/cart"
+          className={(nav) => (nav.isActive ? "nav-active" : "")}
+        >
           <img src={cart} className="h-5 w-5 " alt="Access cart" />
         </NavLink>
-        <NavLink to="/login" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+        <NavLink
+          to={!user ? "/login" : "/account"}
+          className={(nav) => (nav.isActive ? "nav-active" : "")}
+        >
           <img src={userLogo} className="h-5 w-5 mr-4" alt="Access count" />
         </NavLink>
+        <div>
+          {!!user && (
+            <div className="ml-0.5 pr-2 py-0.5">
+              <h5 className="text-green-700 text-sm">
+                {user[0]["user_first_name"]}
+              </h5>
+            </div>
+          )}
+        </div>
 
         <form>
           <div className="relative">
